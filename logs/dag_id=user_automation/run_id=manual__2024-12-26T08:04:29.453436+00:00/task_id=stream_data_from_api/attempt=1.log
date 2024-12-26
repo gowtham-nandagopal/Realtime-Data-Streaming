@@ -1,0 +1,27 @@
+[2024-12-26T08:04:41.238+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: user_automation.stream_data_from_api manual__2024-12-26T08:04:29.453436+00:00 [queued]>
+[2024-12-26T08:04:41.240+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: user_automation.stream_data_from_api manual__2024-12-26T08:04:29.453436+00:00 [queued]>
+[2024-12-26T08:04:41.240+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2024-12-26T08:04:41.245+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): stream_data_from_api> on 2024-12-26 08:04:29.453436+00:00
+[2024-12-26T08:04:41.246+0000] {standard_task_runner.py:57} INFO - Started process 73 to run task
+[2024-12-26T08:04:41.248+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'user_automation', 'stream_data_from_api', 'manual__2024-12-26T08:04:29.453436+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/kafka_stream.py', '--cfg-path', '/tmp/tmpb7cv2_uh']
+[2024-12-26T08:04:41.249+0000] {standard_task_runner.py:85} INFO - Job 2: Subtask stream_data_from_api
+[2024-12-26T08:04:41.270+0000] {task_command.py:415} INFO - Running <TaskInstance: user_automation.stream_data_from_api manual__2024-12-26T08:04:29.453436+00:00 [running]> on host 6efdd5aed6c2
+[2024-12-26T08:04:41.303+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='gowtham' AIRFLOW_CTX_DAG_ID='user_automation' AIRFLOW_CTX_TASK_ID='stream_data_from_api' AIRFLOW_CTX_EXECUTION_DATE='2024-12-26T08:04:29.453436+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-26T08:04:29.453436+00:00'
+[2024-12-26T08:04:41.968+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=broker:29092 <connecting> [IPv4 ('172.18.0.8', 29092)]>: connecting to broker:29092 [('172.18.0.8', 29092) IPv4]
+[2024-12-26T08:04:41.970+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2024-12-26T08:04:41.971+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=broker:29092 <connecting> [IPv4 ('172.18.0.8', 29092)]>: Connection complete.
+[2024-12-26T08:04:42.077+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2024-12-26T08:04:42.078+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2024-12-26T08:04:42.081+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/kafka_stream.py", line 44, in stream_data
+    current_time = time.time()
+NameError: name 'time' is not defined
+[2024-12-26T08:04:42.097+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=user_automation, task_id=stream_data_from_api, execution_date=20241226T080429, start_date=20241226T080441, end_date=20241226T080442
+[2024-12-26T08:04:42.105+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 2 for task stream_data_from_api (name 'time' is not defined; 73)
+[2024-12-26T08:04:42.125+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-12-26T08:04:42.136+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check
