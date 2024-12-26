@@ -67,4 +67,3 @@ with DAG(
             task_id = 'stream_data_from_api',
             python_callable=stream_data
         )
-    
